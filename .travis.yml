@@ -23,9 +23,13 @@ before_install:
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
 
+script:
+  - npm test
+  - ng build --prod
+
 deploy:
   provider: pages
-  local_dir: build
+  local_dir: dist
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
